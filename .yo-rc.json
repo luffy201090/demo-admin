@@ -19,10 +19,15 @@
     "enableHibernateCache": true,
     "enableSwaggerCodegen": false,
     "enableTranslation": true,
+    "entities": ["Category", "Products"],
     "entitySuffix": "",
+    "herokuAppName": "calm-cliffs-11874",
+    "herokuDeployType": "jar",
+    "herokuJavaVersion": "11",
     "jhiPrefix": "jhi",
     "jhipsterVersion": "7.9.3",
     "languages": ["en"],
+    "lastLiquibaseTimestamp": 1666693703000,
     "messageBroker": false,
     "microfrontend": false,
     "microfrontends": [],
@@ -41,6 +46,7 @@
     "skipFakeData": false,
     "skipUserManagement": true,
     "testFrameworks": [],
+    "useOkta": false,
     "websocket": false,
     "withAdminUi": true
   }

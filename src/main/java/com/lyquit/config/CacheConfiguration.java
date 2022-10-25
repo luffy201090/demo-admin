@@ -49,6 +49,8 @@ public class CacheConfiguration {
             createCache(cm, com.lyquit.domain.User.class.getName());
             createCache(cm, com.lyquit.domain.Authority.class.getName());
             createCache(cm, com.lyquit.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.lyquit.domain.Category.class.getName());
+            createCache(cm, com.lyquit.domain.Products.class.getName());
             // jhipster-needle-caffeine-add-entry
         };
     }
