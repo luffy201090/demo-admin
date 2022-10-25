@@ -240,6 +240,10 @@ jhipster:
       audience:
         - account
         - api://default
+
+logging:
+  level:
+    "com.zaxxer": DEBUG
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class
