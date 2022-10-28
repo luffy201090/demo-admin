@@ -49,8 +49,7 @@ jobs:
       run: doctl registry login --expiry-seconds 600
     - name: Tag image
       run:
-        docker tag demo-admin \
-        registry.digitalocean.com/luffy-container-registry/demo-admin:$NOW
+        docker tag demo-admin:$NOW registry.digitalocean.com/luffy-container-registry/demo-admin:$NOW
     - name: Push image to DO Container Registry
       run: docker push registry.digitalocean.com/luffy-container-registry/demo-admin:$NOW
     - name: Deploy to DigitalOcean Droplet
