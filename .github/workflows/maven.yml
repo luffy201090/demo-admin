@@ -40,7 +40,7 @@ jobs:
     - name: Build with Maven
       run: ./mvnw -Pprod clean package -DskipTests
     - name: Build image
-      run: docker build -t demo-admin .
+      run: docker build -t demo-admin:$NOW .
     - name: Install doctl
       uses: digitalocean/action-doctl@v2
       with:
