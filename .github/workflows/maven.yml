@@ -28,6 +28,7 @@ jobs:
     - name: Build with Maven
       run: ./mvnw -Pprod clean package -DskipTests
   build_docker_image:
+    needs: build_maven
     runs-on: ubuntu-latest
     steps:
     - name: Build image
@@ -44,6 +45,7 @@ jobs:
     - name: Push image to DO Container Registry
       run: docker push registry.digitalocean.com/luffy-container-registry/demo-admin:$VERSION
   deploy:
+    needs: [build_maven, build_docker_image]
     runs-on: ubuntu-latest
     steps:
     - name: Deploy to DigitalOcean Droplet
