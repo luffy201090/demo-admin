@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Build image
-      run: docker build -t demo-admin:$VERSION .
+      run: docker build -t demo-admin:${{ env.VERSION }} .
     - name: Install doctl
       uses: digitalocean/action-doctl@v2
       with:
@@ -41,9 +41,9 @@ jobs:
       run: doctl registry login --expiry-seconds 600
     - name: Tag image
       run:
-        docker tag demo-admin:$VERSION registry.digitalocean.com/luffy-container-registry/demo-admin:$VERSION
+        docker tag demo-admin:${{ env.VERSION }} registry.digitalocean.com/luffy-container-registry/demo-admin:${{ env.VERSION }}
     - name: Push image to DO Container Registry
-      run: docker push registry.digitalocean.com/luffy-container-registry/demo-admin:$VERSION
+      run: docker push registry.digitalocean.com/luffy-container-registry/demo-admin:${{ env.VERSION }}
   deploy:
     needs: [build_maven, build_docker_image]
     runs-on: ubuntu-latest
