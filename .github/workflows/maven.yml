@@ -62,5 +62,5 @@ jobs:
           -e JHIPSTER_SLEEP=30 -e SPRING_DATASOURCE_URL=jdbc:postgresql://host.docker.internal:5432/demo_admin \
           -e JDBC_DATABASE_USERNAME=keycloak -e JDBC_DATABASE_PASSWORD=123456 \
           -e OIDC_URL=https://account.leequyt.monster/auth/realms/jhipster -e OIDC_CLIENT_ID=web_app \
-          -e OIDC_CLIENT_SECRET=web_app \
+          -e OIDC_CLIENT_SECRET=web_app -d\
           registry.digitalocean.com/luffy-container-registry/demo-admin:$VERSION
