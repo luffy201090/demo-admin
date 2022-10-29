@@ -23,6 +23,11 @@ jobs:
           ${{ runner.os }}-maven-
     - name: Build with Maven
       run: ./mvnw -Pprod clean package -DskipTests
+    - name: Upload target
+      uses: actions/upload-artifact@v3
+      with:
+        name: target
+        path: target
   build_docker_image:
     needs: build_maven
     outputs:
@@ -30,6 +35,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - name: Download target
+      uses: actions/download-artifact@v3
+      with:
+        name: target
     - id: generate_version
       name: Generate VERSION
       run: echo "VERSION=$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV
