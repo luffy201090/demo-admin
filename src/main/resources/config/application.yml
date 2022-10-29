@@ -26,7 +26,7 @@ springdoc:
 ---
 eureka:
   client:
-    enabled: true
+    enabled: false
     healthcheck:
       enabled: true
     fetch-registry: true
@@ -243,7 +243,7 @@ jhipster:
 
 logging:
   level:
-    "com.zaxxer": DEBUG
+    'com.zaxxer': DEBUG
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class
