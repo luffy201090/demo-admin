@@ -46,12 +46,14 @@ jobs:
       uses: appleboy/ssh-action@master
       env:
         VERSION: $NOW
+        FOO: 'BAR'
       with:
         host: ${{secrets.HOST}}
         username: ${{secrets.USERNAME}}
         key: ${{secrets.KEY}}
-        envs: VERSION
+        envs: VERSION, FOO
         script: |
           echo "version is $VERSION"
+          echo "FOO is %FOO"
           docker pull registry.digitalocean.com/luffy-container-registry/demo-admin:$VERSION
           docker run --add-host host.docker.internal:host-gateway -p 8081:8081 -e _JAVA_OPTIONS='-Xmx512m -Xms256m' -e SPRING_PROFILES_ACTIVE=prod,api-docs -e MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true -e EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka -e JHIPSTER_SLEEP=30 -e SPRING_DATASOURCE_URL=jdbc:postgresql://host.docker.internal:5432/demo_admin -e JDBC_DATABASE_USERNAME=keycloak -e JDBC_DATABASE_PASSWORD=123456 -e OIDC_URL=https://account.leequyt.monster/auth/realms/jhipster -e OIDC_CLIENT_ID=web_app -e OIDC_CLIENT_SECRET=web_app demo-admin:$VERSION
