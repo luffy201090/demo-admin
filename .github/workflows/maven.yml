@@ -63,11 +63,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Prepare
-      run: echo " v ${{ needs.build_docker_image.outputs.VERSION }}, e ${{ needs.build_docker_image.outputs.EXPORT_VERSION }} "
+      run: echo " ${{ needs.build_docker_image.outputs.VERSION }}"
     - name: Deploy to DigitalOcean Droplet
       uses: appleboy/ssh-action@master
       env:
-        VERSION: ${{ needs.build_docker_image.outputs.EXPORT_VERSION }}
+        VERSION: ${{ needs.build_docker_image.outputs.VERSION }}
         MAGIC_TOKEN: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
         DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
       with:
