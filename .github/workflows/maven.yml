@@ -26,8 +26,8 @@ jobs:
     - name: Upload target
       uses: actions/upload-artifact@v3
       with:
-        name: target
-        path: target
+        name: target_jar
+        path: target/demo-admin-0.0.1-SNAPSHOT.jar
   build_docker_image:
     needs: build_maven
     outputs:
@@ -38,7 +38,7 @@ jobs:
     - name: Download target
       uses: actions/download-artifact@v3
       with:
-        name: target
+        name: target_jar
     - id: generate_version
       name: Generate VERSION
       run: echo "VERSION=$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV
